@@ -1,5 +1,6 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import "./signin.css";
+import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -15,9 +16,7 @@ const Signin = () => {
 			const auth = getAuth();
 
 			const response = await signInWithEmailAndPassword(auth, email, password);
-
 			const token = response._tokenResponse.idToken;
-			console.log("login token", token);
 			Cookies.set("bsmart_jwtToken", token);
 
 			navigate("/");
@@ -56,6 +55,10 @@ const Signin = () => {
 					<Input.Password />
 				</Form.Item>
 
+				<Link to="/forgot-password" style={{ alignSelf: "end", textDecoration: "none" }}>
+                Forgot Password?
+              </Link>
+
 				<Form.Item
 					name="remember"
 					valuePropName="checked"
@@ -69,6 +72,9 @@ const Signin = () => {
 					</Button>
 				</Form.Item>
 			</Form>
+			{/* <Link to="/Signup" style={{ alignSelf: "end", textDecoration: "none" }}>
+                Register here
+              </Link> */}
 		</div>
 	);
 };

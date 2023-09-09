@@ -1,9 +1,10 @@
 import { Row, Col, Avatar, Drawer, Button } from "antd";
 import { useState } from "react";
-import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import { MenuOutlined, CloseOutlined,LogoutOutlined } from "@ant-design/icons";
 import BSmartLogo from "../../assets/BSmartLogo.png";
 import SideBar from "../SideBar";
 import "./index.css";
+import Cookies from "js-cookie";
 
 const HamburgerMenu = () => {
 	const [visible, setVisible] = useState(false);
@@ -15,6 +16,7 @@ const HamburgerMenu = () => {
 	const closeDrawer = () => {
 		setVisible(false);
 	};
+	
 
 	return (
 		<div className="hamburger-div">
@@ -51,6 +53,7 @@ const HamburgerMenu = () => {
 						X
 					</span>
 				</div>
+				
 				<SideBar closeDrawer={closeDrawer} />
 			</Drawer>
 		</div>
@@ -71,6 +74,10 @@ const Profile = () => (
 	/>
 );
 const Head = () => {
+	const handleLogout = () => {
+		Cookies.remove("bsmart_jwtToken");
+		window.location.reload();
+	};
 	return (
 		<div className="head-card">
 			<Row>
@@ -84,23 +91,13 @@ const Head = () => {
 							<Profile />
 						</div>
 						<p className="profile-name">Sudhakar Pothamsetti</p>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="7"
-							height="7"
-							className="icon-drop-down"
-							viewBox="0 0 15 7.5">
-							<path
-								id="Icon_material-arrow-drop-down"
-								data-name="Icon material-arrow-drop-down"
-								d="M10.5,15,18,22.5,25.5,15Z"
-								transform="translate(-10.5 -15)"
-								fill="#fff"
-							/>
-						</svg>
+						<Button type="text" onClick={handleLogout}>
+					<LogoutOutlined style={{ color: "white", fontSize: "20px" }} />
+				</Button>
 					</div>
 
 					<HamburgerMenu />
+					
 				</Col>
 			</Row>
 		</div>

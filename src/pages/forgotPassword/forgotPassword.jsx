@@ -1,5 +1,6 @@
 import { Button, Checkbox, Form, Input, message } from "antd";
 import "./forgotPassword.css";
+import { Link } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,9 @@ const ForgotPassword = () => {
 		try {
 			const response = await sendPasswordResetEmail(auth, email);
 			message.success("Password reset email sent. Please check your mail.");
+			navigate("/Signin");
 		} catch (err) {
+			message.error("Invalid email. Please try again.");
 			console.log("forgot password err", err);
 		}
 	};
