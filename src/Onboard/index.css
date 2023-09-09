@@ -1,0 +1,29 @@
+.onboard-bg{
+    width: 82vw;
+    height: 90vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: auto;
+}
+.inner-div{
+    border: 1px dashed grey;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+}
+.add-icon-div{
+    padding: 20px;
+}
+
+@media (max-width:768px){
+    .onboard-bg{
+    width: 100vw;
+    }
+}

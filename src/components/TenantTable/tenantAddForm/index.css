@@ -1,0 +1,30 @@
+.tenant-add-form-main-bg {
+    width: 82vw;
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.tenant-add-form-bg {
+    width: 40%;
+    height: 45%;
+    background-color: yellow;
+    margin-top: -172px;
+}
+
+@media(max-width:768px) {
+    .tenant-add-form-main-bg {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: whitesmoke;
+    }
+
+    .tenant-add-form-bg {
+        width: 80%;
+        margin-top: -160px;
+    }
+}
