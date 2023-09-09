@@ -2,6 +2,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 import "./signin.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Signin = () => {
 	const navigate = useNavigate();
@@ -14,6 +15,10 @@ const Signin = () => {
 			const auth = getAuth();
 
 			const response = await signInWithEmailAndPassword(auth, email, password);
+
+			const token = response._tokenResponse.idToken;
+			console.log("login token", token);
+			Cookies.set("bsmart_jwtToken", token);
 
 			navigate("/");
 		} catch (err) {
